@@ -3,12 +3,17 @@ version: 2.1
 jobs:
   build:
     machine: true
-    working_directory: $CIRCLE_WORKING_DIRECTORY/app
     steps:
       - checkout
       # ... steps for building/testing app ...
 
       # build and push Docker image
-      - run: docker build --file Dockerfile.test -t test-image:0.1.$CIRCLE_BUILD_NUM .
+      - run: 
+          name: Build
+          command: docker build --file Dockerfile.test -t test-image:0.1.$CIRCLE_BUILD_NUM .
+          working_directory: ~/app
 
-      - run: docker run -t test-image:0.1.$CIRCLE_BUILD_NUM
+      - run: 
+          name: Test
+          command: docker run -t test-image:0.1.$CIRCLE_BUILD_NUM
+          working_directory: ~/app
