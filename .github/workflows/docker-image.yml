@@ -12,7 +12,7 @@ jobs:
 
     runs-on: node:alpine
     steps:
-      - name: Test
+    - name: Test
       working-directory: app
       run: npm test
 
