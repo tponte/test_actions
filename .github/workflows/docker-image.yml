@@ -17,7 +17,7 @@ jobs:
     - name: Build the test Docker image
       run: docker build --file Dockerfile.test --tag test-image-name:test .
       working-directory: app
-    - name:
+    - name: Test 
       run: docker run -t test-image-name:test
       working-directory: app 
 
