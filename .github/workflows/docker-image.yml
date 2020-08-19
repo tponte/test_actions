@@ -15,10 +15,10 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Build the test Docker image
-      run: docker build . --file Dockerfile.test --tag test-image-name:$(date +%s)
+      run: docker build --file Dockerfile.test --tag test-image-name:test .
       working-directory: app
     - name:
-      run: docker run test-image-name:latest
+      run: docker run -t test-image-name:test
       working-directory: app 
 
   # build:
