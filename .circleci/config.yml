@@ -12,9 +12,9 @@ jobs:
       - run: 
           name: Build
           command: docker build --file Dockerfile.test -t test-image:0.1.$CIRCLE_BUILD_NUM .
-          working_directory: ~/app
+          working_directory: $CIRCLE_WORKING_DIRECTORY/app
 
       - run: 
           name: Test
           command: docker run -t test-image:0.1.$CIRCLE_BUILD_NUM
-          working_directory: ~/app
+          working_directory: $CIRCLE_WORKING_DIRECTORY/app
