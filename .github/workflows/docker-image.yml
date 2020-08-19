@@ -10,7 +10,7 @@ jobs:
 
   test:
 
-    runs-on: node:alpine
+    runs-on: ubuntu-latest
     steps:
     - name: Test
       working-directory: app
