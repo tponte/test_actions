@@ -9,12 +9,17 @@ on:
 jobs:
 
   test:
-
+    
     runs-on: ubuntu-latest
+
     steps:
-    - name: Test
+    - uses: actions/checkout@v2
+    - name: Build the test Docker image
+      run: docker build . --file Dockerfile.test --tag test-image-name:$(date +%s)
       working-directory: app
-      run: npm test
+    - name:
+      run: docker run test-image-name:latest
+      working-directory: app 
 
   # build:
 
