@@ -8,6 +8,14 @@ on:
 
 jobs:
 
+  test:
+
+    runs-on: node:alpine
+    steps:
+      - name: Test
+      working-directory: app
+      run: npm test
+
   build:
 
     runs-on: ubuntu-latest
@@ -17,3 +25,5 @@ jobs:
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
       working-directory: app
+
+  
